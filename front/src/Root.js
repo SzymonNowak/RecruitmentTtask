@@ -4,13 +4,14 @@ import { Provider } from "react-redux";
 import { ThemeProvider } from "styled-components";
 import { routes } from "routes/routes";
 import { theme } from "theme/mainTheme";
+import store from "store/store";
 import Main from "views/Main";
 import Cart from "views/Cart";
 import MakeOrder from "views/MakeOrder";
 import GlobalStyle from "theme/GlobalStyle";
 const Root = () => {
   return (
-    <>
+    <Provider store={store}>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <BrowserRouter>
@@ -26,7 +27,7 @@ const Root = () => {
           </Switch>
         </BrowserRouter>
       </ThemeProvider>
-    </>
+    </Provider>
   );
 };
 
