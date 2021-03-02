@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import AddToCartButton from "components/Atoms/AddToCartButton/AddToCartButton";
+import { useDispatch, useSelector } from "react-redux";
+import { addBookToCart } from "actions/cart";
 const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,7 +24,12 @@ const StyledImg = styled.img`
   max-width: 40%;
 `;
 
-const BookCard = ({ img, tittle, author, pages, price }) => {
+const BookCard = ({ img, id, tittle, author, pages, price }) => {
+  const dispatch = useDispatch();
+
+  const handleClick = (id) => {
+    dispatch(addBookToCart(id));
+  };
   return (
     <CardWrapper>
       <StyledImg alt="zdjecie" src={img} />
@@ -38,7 +45,9 @@ const BookCard = ({ img, tittle, author, pages, price }) => {
       <p>
         <Info>price:</Info>: {price}
       </p>
-      <AddToCartButton>DODAJ DO KOSZYKA</AddToCartButton>
+      <AddToCartButton onClick={() => handleClick(id)}>
+        DODAJ DO KOSZYKA
+      </AddToCartButton>
     </CardWrapper>
   );
 };
