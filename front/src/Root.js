@@ -9,22 +9,25 @@ import Main from "views/Main";
 import Cart from "views/Cart";
 import MakeOrder from "views/MakeOrder";
 import GlobalStyle from "theme/GlobalStyle";
+import MainTempalte from "templates/MainTemplate";
 const Root = () => {
   return (
     <Provider store={store}>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Switch>
-            <Route
-              exact
-              path={routes.home}
-              render={() => <Redirect to="/main" />}
-            />
-            <Route path={routes.main} component={Main} />
-            <Route path={routes.cart} component={Cart} />
-            <Route path={routes.makeOrder} component={MakeOrder} />
-          </Switch>
+          <MainTempalte>
+            <Switch>
+              <Route
+                exact
+                path={routes.home}
+                render={() => <Redirect to="/main" />}
+              />
+              <Route path={routes.main} component={Main} />
+              <Route path={routes.cart} component={Cart} />
+              <Route path={routes.makeOrder} component={MakeOrder} />
+            </Switch>
+          </MainTempalte>
         </BrowserRouter>
       </ThemeProvider>
     </Provider>
