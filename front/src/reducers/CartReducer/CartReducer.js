@@ -22,7 +22,9 @@ const addBookToCart = (state, { type, payload }) => ({
 
 const removeBookFromCart = (state, { type, payload }) => ({
   ...state,
-  booksInCart: state.booksInCart.filter((item, index) => index !== payload.id),
+  booksInCart: state.booksInCart.filter(
+    (book, index) => index !== payload.book.index
+  ),
 });
 
 export default CartReducer;

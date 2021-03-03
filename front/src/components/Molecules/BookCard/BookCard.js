@@ -25,10 +25,16 @@ const StyledImg = styled.img`
 `;
 
 const BookCard = ({ img, id, tittle, author, pages, price }) => {
+  const book = {
+    id,
+    tittle,
+    author,
+    price,
+  };
   const dispatch = useDispatch();
 
-  const handleClick = (id) => {
-    dispatch(addBookToCart(id));
+  const handleClick = (book) => {
+    dispatch(addBookToCart(book));
   };
   return (
     <CardWrapper>
@@ -45,7 +51,7 @@ const BookCard = ({ img, id, tittle, author, pages, price }) => {
       <p>
         <Info>price:</Info>: {price}
       </p>
-      <AddToCartButton onClick={() => handleClick(id)}>
+      <AddToCartButton onClick={() => handleClick(book)}>
         DODAJ DO KOSZYKA
       </AddToCartButton>
     </CardWrapper>
