@@ -2,13 +2,20 @@ import React from "react";
 import styled from "styled-components";
 import { removeBookFromCart } from "actions/cart";
 import { useDispatch, useSelector } from "react-redux";
-
+import RemoveFromCartButton from "components/Atoms/RemoveFromCartButton/RemoveFromCartButton";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+const BoxWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 550px;
+  margin-top: 10px;
 `;
 
 const Cart = () => {
@@ -19,12 +26,22 @@ const Cart = () => {
   };
   return (
     <Wrapper>
+      {cart.length <= 0 && <p>twoj koszyk jest pusty</p>}
       {cart.map((item, index) => (
-        <div key={item.id}>
-          <p> Tittle:{item.tittle}</p>
-          <p> Author:{item.author}</p>
-          <p> Price:{item.price}</p>
-          <button
+        <BoxWrapper key={item.id}>
+          <p>
+            <b>Tittle:</b>
+            {item.tittle}
+          </p>
+          <p>
+            <b>Author:</b>
+            {item.author}
+          </p>
+          <p>
+            <b>Price:</b>
+            {item.price}
+          </p>
+          <RemoveFromCartButton
             onClick={() =>
               handleClick({
                 id: item.id,
@@ -33,8 +50,8 @@ const Cart = () => {
             }
           >
             usun z koszyka
-          </button>
-        </div>
+          </RemoveFromCartButton>
+        </BoxWrapper>
       ))}
     </Wrapper>
   );

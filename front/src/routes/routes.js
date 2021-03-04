@@ -8,4 +8,5 @@ export const routes = {
 export const apiRoutes = {
   api: "http://localhost:3001/api/",
   getAllBooks: "http://localhost:3001/api/book/",
+  makeOrder: "http://localhost:3001/api/order/",
 };
