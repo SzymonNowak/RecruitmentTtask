@@ -7,11 +7,20 @@ export const addBookToCart = (book) => {
   };
 };
 
-export const removeBookFromCart = (book) => {
+export const removeBookFromCart = (id) => {
   return {
     type: actionTypes.REMOVE_BOOK_FROM_CART,
     payload: {
-      book,
+      id,
+    },
+  };
+};
+
+export const increaseDown = (id) => {
+  return {
+    type: actionTypes.INCREASE_DOWN,
+    payload: {
+      id,
     },
   };
 };

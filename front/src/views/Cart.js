@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { removeBookFromCart } from "actions/cart";
+import { addBookToCart, removeBookFromCart, increaseDown } from "actions/cart";
 import { useDispatch, useSelector } from "react-redux";
 import RemoveFromCartButton from "components/Atoms/RemoveFromCartButton/RemoveFromCartButton";
 const Wrapper = styled.div`
@@ -19,17 +19,17 @@ const BoxWrapper = styled.div`
 `;
 
 const Cart = () => {
-  const cart = useSelector((state) => state.CartReducer.booksInCart);
+  const order = useSelector((state) => state.CartReducer.order);
 
   const dispatch = useDispatch();
 
-  const handleClick = (book) => {
-    dispatch(removeBookFromCart(book));
+  const handleClick = (id) => {
+    dispatch(removeBookFromCart(id));
   };
   return (
     <Wrapper>
-      {cart.length <= 0 && <p>twoj koszyk jest pusty</p>}
-      {cart.map((item, index) => (
+      {order.length <= 0 && <p>twoj koszyk jest pusty</p>}
+      {order.map((item, index) => (
         <BoxWrapper key={item.id}>
           <p>
             <b>Tittle:</b>
@@ -43,15 +43,22 @@ const Cart = () => {
             <b>Price:</b>
             {item.price}
           </p>
+          <p>
+            <b>quantity:</b>
+            {item.quantity}
+          </p>
+          <RemoveFromCartButton onClick={() => dispatch(increaseDown(item.id))}>
+            -1
+          </RemoveFromCartButton>
           <RemoveFromCartButton
-            onClick={() =>
-              handleClick({
-                id: item.id,
-                index: index,
-              })
-            }
+            onClick={() => dispatch(addBookToCart({ id: item.id }))}
           >
-            usun z koszyka
+            +1
+          </RemoveFromCartButton>
+          <RemoveFromCartButton
+            onClick={() => dispatch(removeBookFromCart(item.id))}
+          >
+            remove
           </RemoveFromCartButton>
         </BoxWrapper>
       ))}
