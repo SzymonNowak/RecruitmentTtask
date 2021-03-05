@@ -3,19 +3,22 @@ export const increasingDown = (state, { type, payload }) => {
   let newCart = increaseDown(state.order, id);
 
   return {
-    ...state.order,
     order: Object.assign([], newCart),
   };
 };
 const increaseDown = (order, id) => {
-  for (let i = 0; i < order.length; i++) {
+  const reducedQuantityOrder = reduceQuantity(order, id);
+  const filteredOrder = reducedQuantityOrder.filter(
+    (item) => item.quantity > 0
+  );
+  return filteredOrder;
+};
+
+const reduceQuantity = (order, id) => {
+  for (let i = order.length - 1; i >= 0; i--) {
     if (order[i].id == id) {
       if (order[i].quantity > 0) {
         order[i].quantity -= 1;
-        if (order[i].quantity <= 0) {
-          order.splice(order[i], 1);
-          return order;
-        }
         return order;
       }
     }

@@ -11,7 +11,6 @@ export const addBookToCart = (state, { type, payload }) => {
   if (checkIsItemInArray(state.order, id)) {
     let newCart = increaseIfFound(state.order, id);
     return {
-      ...state.order,
       order: Object.assign([], newCart),
     };
   } else {
