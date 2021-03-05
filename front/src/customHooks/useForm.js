@@ -32,7 +32,6 @@ const useForm = (validateInfo, callback, order) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateInfo(values));
-    console.log(fullOrder);
     setIsSubmitting(true);
   };
   useEffect(() => {

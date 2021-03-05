@@ -19,11 +19,9 @@ export default function validateInfo(values) {
 
   if (!values.zip_code) {
     errors.zip_code = "Zip Code required";
-  } else if (/\d{2}\-\d{3}/.test(values.zip_code.trim()) ? false : true) {
-    console.log("dupa");
+  } else if (!/\d{2}\-\d{3}/.test(values.zip_code.trim())) {
     errors.zip_code = "Enter a valid zip code";
   }
-  console.log(/\\d{2}-\\d{3}/.test(values.zip_code.trim()));
 
   return errors;
 }

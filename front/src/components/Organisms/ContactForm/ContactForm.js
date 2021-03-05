@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import useForm from "customHooks/useForm";
 import validateInfo from "customHooks/validateInfo";
+import { GoNextButton } from "components/Atoms/GoNextButton/GoNextButton";
 const MainWrapper = styled.nav`
   display: flex;
   justify-content: center;
@@ -15,6 +16,27 @@ const FormWrapper = styled.form`
 `;
 const StyledInput = styled.input`
   margin-bottom: 10px;
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid black;
+  &:focus {
+    outline: none;
+    border: none;
+    border-bottom: 1px solid blue;
+  }
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    font-size: 10px;
+  }
+`;
+const StyledLabel = styled.label`
+  margin-bottom: 4px;
+  font-weight: bold;
+`;
+const Error = styled.p`
+  color: red;
+  margin-bottom: 10px;
+  font-weight: bold;
 `;
 
 const ContactForm = ({ submitForm }) => {
@@ -35,7 +57,7 @@ const ContactForm = ({ submitForm }) => {
   return (
     <MainWrapper>
       <FormWrapper onSubmit={handleSubmit}>
-        <label htmlFor="first_name">Imie</label>
+        <StyledLabel htmlFor="first_name">Imie</StyledLabel>
         <StyledInput
           type="text"
           id="first_name"
@@ -44,8 +66,8 @@ const ContactForm = ({ submitForm }) => {
           value={values.first_name}
           onChange={handleChange}
         />
-        {errors.first_name && <p>{errors.first_name}</p>}
-        <label htmlFor="last_name">Nazwisko</label>
+        {errors.first_name && <Error>{errors.first_name}</Error>}
+        <StyledLabel htmlFor="last_name">Nazwisko</StyledLabel>
         <StyledInput
           type="text"
           id="last_name"
@@ -54,9 +76,9 @@ const ContactForm = ({ submitForm }) => {
           value={values.last_name}
           onChange={handleChange}
         />
-        {errors.last_name && <p>{errors.last_name}</p>}
+        {errors.last_name && <Error>{errors.last_name}</Error>}
 
-        <label htmlFor="lname">Miejscowość</label>
+        <StyledLabel htmlFor="lname">Miejscowość</StyledLabel>
         <StyledInput
           type="text"
           id="city"
@@ -65,9 +87,9 @@ const ContactForm = ({ submitForm }) => {
           value={values.city}
           onChange={handleChange}
         />
-        {errors.city && <p>{errors.city}</p>}
+        {errors.city && <Error>{errors.city}</Error>}
 
-        <label htmlFor="zip_code">Kod Pocztowy</label>
+        <StyledLabel htmlFor="zip_code">Kod Pocztowy</StyledLabel>
 
         <StyledInput
           type="text"
@@ -77,9 +99,9 @@ const ContactForm = ({ submitForm }) => {
           value={values.zip_code}
           onChange={handleChange}
         />
-        {errors.zip_code && <p>{errors.zip_code}</p>}
+        {errors.zip_code && <Error>{errors.zip_code}</Error>}
 
-        <button>Zamow</button>
+        <GoNextButton>Zamow</GoNextButton>
       </FormWrapper>
     </MainWrapper>
   );

@@ -1,13 +1,9 @@
 import { actionTypes } from "constans/actionTypes";
 
-const initialState = {
-  booksInCart: [],
-};
-
-const OrderReducer = (state = "", action) => {
-  switch (action.type) {
+const OrderReducer = (state = "", { type, payload }) => {
+  switch (type) {
     case actionTypes.MAKE_ORDER:
-      return state;
+      return payload;
     default:
       return state;
   }

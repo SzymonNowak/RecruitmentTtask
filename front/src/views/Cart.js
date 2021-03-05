@@ -1,70 +1,89 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { addBookToCart, removeBookFromCart, increaseDown } from "actions/cart";
 import { useDispatch, useSelector } from "react-redux";
-import RemoveFromCartButton from "components/Atoms/RemoveFromCartButton/RemoveFromCartButton";
+import SmallButton from "components/Atoms/SmallButton/SmallButton";
 import { NavLink } from "react-router-dom";
 import { routes } from "routes/routes";
+import { GoNextButton } from "components/Atoms/GoNextButton/GoNextButton";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
+  height: 500px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
 `;
-const BoxWrapper = styled.div`
+const RowColumn = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  height: 50px;
+  margin-top: 30px;
+  align-items: flex-start;
+  width: 600px;
+`;
+const ButtonRow = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  height: 50px;
+  align-items: flex-start;
+`;
+const ColumnWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  min-width: 550px;
-  margin-top: 10px;
+`;
+const Info = styled.span`
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: uppercase;
 `;
 
 const Cart = () => {
   const order = useSelector((state) => state.CartReducer.order);
-
   const dispatch = useDispatch();
 
-  const handleClick = (id) => {
-    dispatch(removeBookFromCart(id));
-  };
   return (
     <Wrapper>
-      {order.length <= 0 && <p>twoj koszyk jest pusty</p>}
+      {order.length <= 0 && <Info>Your cart is empty </Info>}
       {order.map((item, index) => (
-        <BoxWrapper key={item.id}>
-          <p>
-            <b>Tittle:</b>
-            {item.tittle}
-          </p>
-          <p>
-            <b>Author:</b>
-            {item.author}
-          </p>
-          <p>
-            <b>Price:</b>
-            {item.price}
-          </p>
-          <p>
-            <b>quantity:</b>
-            {item.quantity}
-          </p>
-          <RemoveFromCartButton onClick={() => dispatch(increaseDown(item.id))}>
-            -1
-          </RemoveFromCartButton>
-          <RemoveFromCartButton
-            onClick={() => dispatch(addBookToCart({ id: item.id }))}
-          >
-            +1
-          </RemoveFromCartButton>
-          <RemoveFromCartButton
-            onClick={() => dispatch(removeBookFromCart(item.id))}
-          >
-            remove
-          </RemoveFromCartButton>
-        </BoxWrapper>
+        <div key={item.id}>
+          <RowColumn>
+            <SmallButton onClick={() => dispatch(removeBookFromCart(item.id))}>
+              x
+            </SmallButton>
+            <ColumnWrapper>
+              <p>
+                <Info>Title:</Info>
+                {item.title}
+              </p>
+              <p>
+                <Info>Price:</Info>
+                {item.price}
+              </p>
+            </ColumnWrapper>
+            <ButtonRow>
+              <SmallButton onClick={() => dispatch(increaseDown(item.id))}>
+                -1
+              </SmallButton>
+              <p>
+                <Info> {item.quantity}</Info>x
+              </p>
+              <SmallButton
+                increaseUp
+                onClick={() => dispatch(addBookToCart({ id: item.id }))}
+              >
+                +1
+              </SmallButton>
+            </ButtonRow>
+          </RowColumn>
+        </div>
       ))}
-      {order.length > 0 && <NavLink to={routes.makeOrder}>go next</NavLink>}
+      {order.length > 0 && (
+        <NavLink to={routes.makeOrder}>
+          <GoNextButton>go next</GoNextButton>
+        </NavLink>
+      )}
     </Wrapper>
   );
 };

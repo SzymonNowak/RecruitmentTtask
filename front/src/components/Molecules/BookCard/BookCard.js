@@ -1,27 +1,37 @@
 import React from "react";
 import styled from "styled-components";
-import AddToCartButton from "components/Atoms/AddToCartButton/AddToCartButton";
-import { useDispatch, useSelector } from "react-redux";
+import LongButton from "components/Atoms/LongButton/LongButton";
+import { useDispatch } from "react-redux";
 import { addBookToCart } from "actions/cart";
+
+const MainWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+`;
 const CardWrapper = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
-  min-height: 600px;
-  min-width: 550px;
+  justify-content: flex-start;
+  max-width: 700px;
+  height: 100%;
   margin: 25px 25px 25px 25px;
-  border-radius: 10px;
-  box-shadow: 0px 2px 5px 7px rgba(0, 0, 0, 0.07);
 `;
-const Info = styled.span`
-  font-weight: bold;
+
+const ColumnInfoBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-left: 30px;
+`;
+const Info = styled.p`
+  /* font-weight: bold; */
   font-size: 20px;
   text-transform: uppercase;
+  margin-top: 10px;
 `;
 
 const StyledImg = styled.img`
-  max-width: 40%;
+  width: 20%;
 `;
 
 const BookCard = ({ img, id, tittle, author, pages, price }) => {
@@ -37,24 +47,27 @@ const BookCard = ({ img, id, tittle, author, pages, price }) => {
     dispatch(addBookToCart(book));
   };
   return (
-    <CardWrapper>
-      <StyledImg alt="zdjecie" src={img} />
-      <p>
-        <Info>pages:</Info> {pages}
-      </p>
-      <p>
-        <Info>tittle:</Info> {tittle}
-      </p>
-      <p>
-        <Info>author:</Info>: {author}
-      </p>
-      <p>
-        <Info>price:</Info>: {price}
-      </p>
-      <AddToCartButton onClick={() => handleClick(book)}>
-        DODAJ DO KOSZYKA
-      </AddToCartButton>
-    </CardWrapper>
+    <MainWrapper>
+      <CardWrapper>
+        <StyledImg alt="zdjecie" src={img} />
+
+        <ColumnInfoBox>
+          <Info>
+            <b>pages:</b> {pages}
+          </Info>
+          <Info>
+            <b>title:</b> {tittle}
+          </Info>
+          <Info>
+            <b>author</b>: {author}
+          </Info>
+          <Info>
+            <b>price:</b> {price}
+          </Info>
+          <LongButton onClick={() => handleClick(book)}>add to cart</LongButton>
+        </ColumnInfoBox>
+      </CardWrapper>
+    </MainWrapper>
   );
 };
 
