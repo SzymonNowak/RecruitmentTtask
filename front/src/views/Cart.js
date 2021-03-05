@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { addBookToCart, removeBookFromCart, increaseDown } from "actions/cart";
 import { useDispatch, useSelector } from "react-redux";
 import RemoveFromCartButton from "components/Atoms/RemoveFromCartButton/RemoveFromCartButton";
+import { NavLink } from "react-router-dom";
+import { routes } from "routes/routes";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -62,7 +64,7 @@ const Cart = () => {
           </RemoveFromCartButton>
         </BoxWrapper>
       ))}
-      <p>go next</p>
+      {order.length > 0 && <NavLink to={routes.makeOrder}>go next</NavLink>}
     </Wrapper>
   );
 };

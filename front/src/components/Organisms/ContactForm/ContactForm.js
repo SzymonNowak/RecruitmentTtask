@@ -18,12 +18,19 @@ const StyledInput = styled.input`
 `;
 
 const ContactForm = ({ submitForm }) => {
-  const order = "";
-  const cart = useSelector((state) => state.CartReducer.booksInCart);
+  const cart = useSelector((state) => state.CartReducer.order);
+  const itemFromCart = [];
+  cart.map((item) => {
+    itemFromCart.push({
+      id: item.id,
+      quantity: item.quantity,
+    });
+  });
+
   const { handleChange, values, handleSubmit, errors } = useForm(
     validateInfo,
     submitForm,
-    order
+    itemFromCart
   );
   return (
     <MainWrapper>

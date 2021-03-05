@@ -22,13 +22,8 @@ const useForm = (validateInfo, callback, order) => {
     });
   };
 
-  const dlaKarola = {
-    order: [
-      {
-        id: 457,
-        quantity: 1,
-      },
-    ],
+  const fullOrder = {
+    order: order,
     first_name: values.first_name,
     last_name: values.last_name,
     city: values.city,
@@ -37,12 +32,12 @@ const useForm = (validateInfo, callback, order) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateInfo(values));
+    console.log(fullOrder);
     setIsSubmitting(true);
   };
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-      dispatch(makeOrder(dlaKarola));
-      console.log(dlaKarola);
+      dispatch(makeOrder(fullOrder));
       callback();
     }
   }, [errors]);
