@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { removeBookFromCart } from "actions/cart";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,8 +19,10 @@ const BoxWrapper = styled.div`
 `;
 
 const Cart = () => {
-  const dispatch = useDispatch();
   const cart = useSelector((state) => state.CartReducer.booksInCart);
+
+  const dispatch = useDispatch();
+
   const handleClick = (book) => {
     dispatch(removeBookFromCart(book));
   };
@@ -53,6 +55,7 @@ const Cart = () => {
           </RemoveFromCartButton>
         </BoxWrapper>
       ))}
+      <p>go next</p>
     </Wrapper>
   );
 };
