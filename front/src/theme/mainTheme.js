@@ -1,11 +1,10 @@
 export const theme = {
   colors: {
-    darkGrey: "#7C7A7A",
-    lightGrey: "#C4C4C4",
-    lightBlue: "#00E0FF",
+    green: "green",
     black: "hsl(0, 0%, 0%)",
-    red: "#FF0000",
+    red: "red",
     white: "white",
+    blue: "blue",
   },
   fontWeight: {
     extraLight: 300,
@@ -14,9 +13,9 @@ export const theme = {
     bold: 600,
   },
   fontSize: {
-    s: "12px",
-    m: "24px",
-    l: "36px",
+    s: "10px",
+    m: "20px",
+    l: "30px",
   },
   margin: {
     xs: "10x",
@@ -24,6 +23,6 @@ export const theme = {
     m: "30px",
     l: "40px",
     xl: "50px",
-    xxl: "300px",
+    xxl: "100px",
   },
 };

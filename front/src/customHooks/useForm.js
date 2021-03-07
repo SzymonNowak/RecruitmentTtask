@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { makeOrder } from "actions/order";
 const useForm = (validateInfo, callback, order) => {
   const dispatch = useDispatch();

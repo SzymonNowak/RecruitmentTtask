@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 import { NavLink } from "react-router-dom";
 import { routes } from "routes/routes";
@@ -16,14 +16,14 @@ const MainWrapper = styled.nav`
 
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 100px;
+  margin-bottom: ${({ theme }) => theme.margin.xxl};
 `;
 const StyledLink = styled(NavLink)`
   color: white;
   text-decoration: none;
   font-weight: bold;
   &.active {
-    color: green;
+    color: ${({ theme }) => theme.colors.black};
   }
 `;
 

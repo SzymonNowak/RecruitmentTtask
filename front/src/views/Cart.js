@@ -13,17 +13,17 @@ const Wrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 30px;
+  margin-top: ${({ theme }) => theme.margin.m};
 `;
-const RowColumn = styled.div`
+const Row = styled.div`
   display: flex;
   justify-content: flex-start;
   height: 50px;
-  margin-top: 30px;
+  margin-top: ${({ theme }) => theme.margin.m};
   align-items: flex-start;
   width: 600px;
 `;
-const ButtonRow = styled.div`
+const ButtonWrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   height: 50px;
@@ -35,7 +35,7 @@ const ColumnWrapper = styled.div`
 `;
 const Info = styled.span`
   font-weight: bold;
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSize.m};
   text-transform: uppercase;
 `;
 
@@ -48,7 +48,7 @@ const Cart = () => {
       {order.length <= 0 && <Info>Your cart is empty </Info>}
       {order.map((item, index) => (
         <div key={item.id}>
-          <RowColumn>
+          <Row>
             <SmallButton onClick={() => dispatch(removeBookFromCart(item.id))}>
               x
             </SmallButton>
@@ -62,7 +62,7 @@ const Cart = () => {
                 {item.price}
               </p>
             </ColumnWrapper>
-            <ButtonRow>
+            <ButtonWrapper>
               <SmallButton onClick={() => dispatch(increaseDown(item.id))}>
                 -1
               </SmallButton>
@@ -75,8 +75,8 @@ const Cart = () => {
               >
                 +1
               </SmallButton>
-            </ButtonRow>
-          </RowColumn>
+            </ButtonWrapper>
+          </Row>
         </div>
       ))}
       {order.length > 0 && (

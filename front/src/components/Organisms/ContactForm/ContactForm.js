@@ -15,18 +15,18 @@ const FormWrapper = styled.form`
   width: 500px;
 `;
 const StyledInput = styled.input`
-  margin-bottom: 10px;
+  margin-bottom: ${({ theme }) => theme.margin.s};
   height: 40px;
   border: none;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.black};
   &:focus {
     outline: none;
     border: none;
-    border-bottom: 1px solid blue;
+    border-bottom: 3px solid ${({ theme }) => theme.colors.blue};
   }
   ::placeholder,
   ::-webkit-input-placeholder {
-    font-size: 10px;
+    font-size: ${({ theme }) => theme.fontSize.s};
   }
 `;
 const StyledLabel = styled.label`
@@ -35,7 +35,7 @@ const StyledLabel = styled.label`
 `;
 const Error = styled.p`
   color: red;
-  margin-bottom: 10px;
+  margin-bottom: ${({ theme }) => theme.margin.m};
   font-weight: bold;
 `;
 
@@ -57,7 +57,7 @@ const ContactForm = ({ submitForm }) => {
   return (
     <MainWrapper>
       <FormWrapper onSubmit={handleSubmit}>
-        <StyledLabel htmlFor="first_name">Imie</StyledLabel>
+        <StyledLabel htmlFor="first_name">First Name</StyledLabel>
         <StyledInput
           type="text"
           id="first_name"
@@ -67,7 +67,7 @@ const ContactForm = ({ submitForm }) => {
           onChange={handleChange}
         />
         {errors.first_name && <Error>{errors.first_name}</Error>}
-        <StyledLabel htmlFor="last_name">Nazwisko</StyledLabel>
+        <StyledLabel htmlFor="last_name">Last Name</StyledLabel>
         <StyledInput
           type="text"
           id="last_name"
@@ -78,7 +78,7 @@ const ContactForm = ({ submitForm }) => {
         />
         {errors.last_name && <Error>{errors.last_name}</Error>}
 
-        <StyledLabel htmlFor="lname">Miejscowość</StyledLabel>
+        <StyledLabel htmlFor="lname">City</StyledLabel>
         <StyledInput
           type="text"
           id="city"
@@ -89,7 +89,7 @@ const ContactForm = ({ submitForm }) => {
         />
         {errors.city && <Error>{errors.city}</Error>}
 
-        <StyledLabel htmlFor="zip_code">Kod Pocztowy</StyledLabel>
+        <StyledLabel htmlFor="zip_code">Zip COde</StyledLabel>
 
         <StyledInput
           type="text"
@@ -101,7 +101,7 @@ const ContactForm = ({ submitForm }) => {
         />
         {errors.zip_code && <Error>{errors.zip_code}</Error>}
 
-        <GoNextButton>Zamow</GoNextButton>
+        <GoNextButton>Order</GoNextButton>
       </FormWrapper>
     </MainWrapper>
   );

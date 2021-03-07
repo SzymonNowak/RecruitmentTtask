@@ -15,17 +15,16 @@ const CardWrapper = styled.div`
   justify-content: flex-start;
   max-width: 700px;
   height: 100%;
-  margin: 25px 25px 25px 25px;
+  margin: ${({ theme }) => theme.margin.m};
 `;
 
 const ColumnInfoBox = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 30px;
+  margin-left: ${({ theme }) => theme.margin.m};
 `;
 const Info = styled.p`
-  /* font-weight: bold; */
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSize.m};
   text-transform: uppercase;
   margin-top: 10px;
 `;
@@ -49,7 +48,7 @@ const BookCard = ({ img, id, tittle, author, pages, price }) => {
   return (
     <MainWrapper>
       <CardWrapper>
-        <StyledImg alt="zdjecie" src={img} />
+        <StyledImg alt="photo" src={img} />
 
         <ColumnInfoBox>
           <Info>

@@ -4,17 +4,17 @@ export const GoNextButton = styled.button`
   width: 150px;
   height: 30px;
   border-radius: 10px;
-  background-color: white;
+  background-color: ${({ theme }) => theme.colors.white};
   outline: none;
-  border: 1px solid green;
+  border: 1px solid ${({ theme }) => theme.colors.green};
   text-transform: uppercase;
   font-weight: bold;
-  margin-top: 60px;
+  margin-top: ${({ theme }) => theme.margin.xl};
   cursor: pointer;
   transition: ease 0.5s;
 
   &:hover {
-    background-color: green;
-    color: white;
+    background-color: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
