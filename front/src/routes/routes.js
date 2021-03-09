@@ -5,8 +5,10 @@ export const routes = {
   makeOrder: "/makeOrder",
 };
 
+const domain = "http://localhost:3001/api";
+
 export const apiRoutes = {
-  api: "http://localhost:3001/api/",
-  getAllBooks: "http://localhost:3001/api/book/",
-  makeOrder: "http://localhost:3001/api/order/",
+  api: `${domain}`,
+  getAllBooks: `${domain}/book`,
+  makeOrder: `${domain}/order`,
 };

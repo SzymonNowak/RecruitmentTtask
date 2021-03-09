@@ -18,7 +18,7 @@ const CardWrapper = styled.div`
   margin: ${({ theme }) => theme.margin.m};
 `;
 
-const ColumnInfoBox = styled.div`
+const BookDetails = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: ${({ theme }) => theme.margin.m};
@@ -33,29 +33,26 @@ const StyledImg = styled.img`
   width: 20%;
 `;
 
-const BookCard = ({ img, id, tittle, author, pages, price }) => {
+const BookCard = ({ img, id, title, author, pages, price }) => {
   const book = {
     id,
-    tittle,
+    title,
     author,
     price,
   };
   const dispatch = useDispatch();
 
-  const handleClick = (book) => {
-    dispatch(addBookToCart(book));
-  };
   return (
     <MainWrapper>
       <CardWrapper>
-        <StyledImg alt="photo" src={img} />
+        <StyledImg alt={title} src={img} />
 
-        <ColumnInfoBox>
+        <BookDetails>
           <Info>
             <b>pages:</b> {pages}
           </Info>
           <Info>
-            <b>title:</b> {tittle}
+            <b>title:</b> {title}
           </Info>
           <Info>
             <b>author</b>: {author}
@@ -63,8 +60,10 @@ const BookCard = ({ img, id, tittle, author, pages, price }) => {
           <Info>
             <b>price:</b> {price}
           </Info>
-          <LongButton onClick={() => handleClick(book)}>add to cart</LongButton>
-        </ColumnInfoBox>
+          <LongButton onClick={() => dispatch(addBookToCart(book))}>
+            add to cart
+          </LongButton>
+        </BookDetails>
       </CardWrapper>
     </MainWrapper>
   );

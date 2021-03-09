@@ -21,8 +21,8 @@ const SmallButton = styled.button`
     color: ${({ theme }) => theme.colors.white};
   }
 
-  ${({ increaseUp }) =>
-    increaseUp &&
+  ${({ increaseQuantity }) =>
+    increaseQuantity &&
     css`
       border: 1px solid ${({ theme }) => theme.colors.green};
       color: ${({ theme }) => theme.colors.green};

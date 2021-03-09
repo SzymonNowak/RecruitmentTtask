@@ -70,7 +70,7 @@ const Cart = () => {
                 <Info> {item.quantity}</Info>x
               </p>
               <SmallButton
-                increaseUp
+                increaseQuantity
                 onClick={() => dispatch(addBookToCart({ id: item.id }))}
               >
                 +1

@@ -1,5 +1,5 @@
 import * as api from "api/api";
-import { actionTypes } from "constans/actionTypes";
+import { actionTypes } from "constants/actionTypes";
 
 export const getAllBooks = () => async (dispatch) => {
   try {

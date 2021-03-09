@@ -9,7 +9,7 @@ export const addBookToCart = (state, { type, payload }) => {
   };
 
   if (checkIsItemInArray(state.order, id)) {
-    let newCart = increaseIfFound(state.order, id);
+    const newCart = increaseIfFound(state.order, id);
     return {
       order: Object.assign([], newCart),
     };

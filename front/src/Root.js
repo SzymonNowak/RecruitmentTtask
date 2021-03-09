@@ -21,7 +21,7 @@ const Root = () => {
               <Route
                 exact
                 path={routes.home}
-                render={() => <Redirect to="/main" />}
+                render={() => <Redirect to={routes.main} />}
               />
               <Route path={routes.main} component={Main} />
               <Route path={routes.cart} component={Cart} />

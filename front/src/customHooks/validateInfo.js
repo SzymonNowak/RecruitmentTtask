@@ -20,7 +20,7 @@ export default function validateInfo(values) {
   if (!values.zip_code) {
     errors.zip_code = "Zip Code required";
   } else if (!/\d{2}\-\d{3}/.test(values.zip_code.trim())) {
-    errors.zip_code = "Enter a valid zip code";
+    errors.zip_code = "Enter a valid zip code like 80-432";
   }
 
   return errors;

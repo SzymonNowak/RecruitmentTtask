@@ -1,4 +1,4 @@
-import { actionTypes } from "constans/actionTypes";
+import { actionTypes } from "constants/actionTypes";
 
 const OrderReducer = (state = "", { type, payload }) => {
   switch (type) {

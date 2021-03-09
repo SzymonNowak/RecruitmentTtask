@@ -28,7 +28,7 @@ const Main = () => {
             key={book.id}
             id={book.id}
             img={book.cover_url}
-            tittle={book.title}
+            title={book.title}
             author={book.author}
             pages={book.pages}
             price={book.price}

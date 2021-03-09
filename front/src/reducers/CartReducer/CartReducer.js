@@ -1,4 +1,4 @@
-import { actionTypes } from "constans/actionTypes";
+import { actionTypes } from "constants/actionTypes";
 import { increasingDown } from "reducers/CartReducer/increaseDown";
 import { addBookToCart } from "reducers/CartReducer/addBookToCart";
 import { removeBookFromCart } from "reducers/CartReducer/removeBookFromCart";
